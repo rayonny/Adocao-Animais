@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Animais Adotados</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: bold;
+      color: #343a40;
+    }
+    .table {
+      background-color: white;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    thead {
+      background-color: #007bff;
+      color: white;
+    }
+    tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+    .table th, .table td {
+      vertical-align: middle;
+    }
+    .btn-secondary {
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Animais Adotados</h2>
+  <table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Espécie</th>
+      <th>Raça</th>
+      <th>Idade</th>
+      <th>Descrição</th>
+      <th>Adotado</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="animal : ${animaisAdotados}">
+      <td th:text="${animal.id}"></td>
+      <td th:text="${animal.nome}"></td>
+      <td th:text="${animal.especie}"></td>
+      <td th:text="${animal.raca}"></td>
+      <td th:text="${animal.idade}"></td>
+      <td th:text="${animal.descricao}"></td>
+      <td th:text="${animal.isAdotado()} ? 'Sim' : 'Não'"></td>
+    </tr>
+    </tbody>
+  </table>
+  <a th:href="@{/animais}" class="btn btn-secondary">Voltar</a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
